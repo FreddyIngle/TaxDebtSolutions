@@ -238,24 +238,35 @@ const Homepage = () => {
         </section>
         {/* Image strip */}
         <section className="mt-16">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {[
-            "/images/tax-image-1.jpeg",
-            "/images/tax-image-2.jpeg",
-            "/images/tax-image-3.jpeg",
-            ].map((src) => (
-            <div
-                key={src}
-                className="overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-            >
-                <img
-                src={src}
-                alt="Tax resolution related"
-                className="h-64 w-full object-cover md:h-72"
-                />
-            </div>
-            ))}
-        </div>
+       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+  {[
+    "/images/tax-image-1.jpeg",
+    "/images/tax-image-2.jpeg",
+    "/images/tax-image-3.jpeg",
+  ].map((src) => (
+    <div
+      key={src}
+      className="relative group overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
+      <img
+        src={src}
+        alt="Tax resolution related"
+        className="h-64 w-full object-cover md:h-72 z-0"
+      />
+
+      {/* Much more visible overlay */}
+      <div className="
+        pointer-events-none absolute inset-0 z-10
+        bg-gradient-to-t from-blue-900/40 via-blue-700/20 to-transparent
+        opacity-60 group-hover:opacity-90
+        transition-all duration-500
+      "></div>
+    </div>
+  ))}
+</div>
+
+
+
         </section>
 
                 {/* Areas we serve + services grid */}

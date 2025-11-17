@@ -24,19 +24,7 @@ const credentials = [
   "Admitted to the U.S. Tax Court",
   "Former accountant with Coopers & Lybrand, CPAs",
 ];
-const localAreasLeft = [
-  "Boca Raton",
-  "Palm Beach County",
-  "Miami-Dade County",
-  "St. Lucie County",
-];
 
-const localAreasRight = [
-  "Florida",
-  "Broward County",
-  "Martin County",
-  "United States (nationwide representation)",
-];
 
 const resolutionServices = [
   {
@@ -392,8 +380,7 @@ const Homepage = () => {
                   Personalized, experienced representation
                 </h3>
                 <p className="mt-2">
-                  You work directly with an experienced tax attorney, not a call
-                  center. Gregory Glenn brings decades of experience resolving
+                  You work directly with an experienced tax attorney. Gregory Glenn brings decades of experience resolving
                   tax issues for individuals and businesses, including work with
                   major accounting firms and complex government matters.
                 </p>

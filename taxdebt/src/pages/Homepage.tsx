@@ -92,8 +92,8 @@ const Homepage = () => {
       <Navbar />
 
       {/* Hero section */}
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-6 md:pt-14">
-        <section className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.2fr)] md:items-center">
+      <main className="bg-[#f5faff] mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-6 md:pt-14">
+        <section className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.2fr)] md:items-center bg-gradient-to-br from-[#e9f4ff] to-white ">
           {/* Photo / intro card */}
           <div
             className={[

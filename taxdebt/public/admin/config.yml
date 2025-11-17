@@ -1,0 +1,40 @@
+backend:
+  # Easiest setup with Netlify Identity + Git Gateway
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"   # where uploaded images are stored in the repo
+public_folder: "/uploads"        # how the site refers to them at runtime
+
+# Show site title in the CMS UI
+site_url: "https://YOUR-SITE-NAME.netlify.app"
+
+collections:
+  # 1) Blog posts
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # 2) Homepage content (we can wire this into React later)
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - file: "src/content/homepage.json"
+        label: "Homepage Content"
+        name: "homepage"
+        fields:
+          - { label: "Hero Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Hero Headline", name: "headline", widget: "string" }
+          - { label: "Hero Subheadline", name: "subheadline", widget: "text" }
+          - { label: "Phone Line", name: "phone_line", widget: "string" }
+          - { label: "Phone Number", name: "phone_number", widget: "string" }
+          - { label: "Main Office Line", name: "office_line", widget: "text" }

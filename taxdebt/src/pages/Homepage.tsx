@@ -106,10 +106,10 @@ const Homepage = () => {
               className={[
                 "relative rounded-2xl bg-white shadow-lg ring-1 ring-slate-200",
                 "transition-transform duration-300 ease-out",
-                shrinkPhoto ? "scale-90 md:scale-95" : "scale-100",
+                shrinkPhoto ? "scale-80 md:scale-95" : "scale-100",
               ].join(" ")}
             >
-     <div className="overflow-hidden rounded-2xl">
+     <div className="overflow-hidden rounded-2xl max-w-[260px] sm:max-w-[300px]">
   <img
     src={gregPhoto}
     alt="Gregory G. Glenn, Esq."

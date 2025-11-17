@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../logo-small.png";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -13,9 +14,15 @@ export function Navbar() {
       <nav className="mx-auto max-w-6xl px-4 py-3 md:px-6">
         <div className="flex items-center justify-between gap-4">
           {/* Left: Firm name */}
-          <div className="text-sm font-semibold tracking-tight md:text-base">
-            Gregory Glenn, P.A.
-          </div>
+          <div className="flex items-center gap-2">
+  <img
+    src={logo}
+    alt="Gregory Glenn logo"
+    className="h-8 w-auto"
+  />
+  
+</div>
+
 
           {/* Center: Logo / practice name (NOT clickable) */}
           <div className="hidden flex-1 items-center justify-center md:flex">

@@ -1,33 +1,30 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
 
-// 1) Import all markdown posts from src/content/blog
+// 1) Import ALL markdown files as RAW text
 const files = import.meta.glob("/src/content/blog/*.md", {
+  as: "raw",
   eager: true,
-  import: "default",
 });
 
-
-
 // 2) Parse each markdown file using gray-matter
-const posts = Object.entries(files).map(([path, mod]: any) => {
-  const { title, date, body } = mod;
-  const slug = path.split("/").pop().replace(".md", "");
+const posts = Object.entries(files).map(([path, raw]) => {
+  const { data, content } = matter(raw as string);
+
+  const slug = path.split("/").pop()?.replace(".md", "") ?? "no-slug";
 
   return {
-    title,
-    date,
     slug,
-    body,
+    title: data.title as string,
+    date: data.date as string,
+    excerpt: data.excerpt as string | undefined,
+    body: content,
   };
 });
 
-
-// 3) Sort posts newest → oldest
-posts.sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-);
+// 3) Sort newest → oldest
+posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const BlogPage: React.FC = () => {
   return (
@@ -40,12 +37,9 @@ const BlogPage: React.FC = () => {
         </header>
 
         {posts.length === 0 && (
-          <p className="text-slate-600">
-            No posts yet. Check back soon!
-          </p>
+          <p className="text-slate-600">No posts yet. Check back soon!</p>
         )}
 
-        {/* Blog posts */}
         <div className="space-y-10">
           {posts.map((post) => (
             <article
@@ -72,4 +66,3 @@ const BlogPage: React.FC = () => {
 };
 
 export default BlogPage;
-

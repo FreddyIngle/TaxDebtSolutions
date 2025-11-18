@@ -4,24 +4,25 @@ import matter from "gray-matter";
 
 // 1) Import all markdown posts from src/content/blog
 const files = import.meta.glob("/src/content/blog/*.md", {
-  as: "raw",
   eager: true,
+  import: "default",
 });
+
 
 
 // 2) Parse each markdown file using gray-matter
-const posts = Object.entries(files).map(([path, raw]) => {
-  const { data, content } = matter(raw as string);
-
-  const slug = path.split("/").pop()?.replace(".md", "") ?? "no-slug";
+const posts = Object.entries(files).map(([path, mod]: any) => {
+  const { title, date, body } = mod;
+  const slug = path.split("/").pop().replace(".md", "");
 
   return {
+    title,
+    date,
     slug,
-    title: data.title as string,
-    date: data.date as string,
-    body: content,
+    body,
   };
 });
+
 
 // 3) Sort posts newest → oldest
 posts.sort(

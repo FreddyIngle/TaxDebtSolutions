@@ -14,19 +14,11 @@ collections:
     label: "Blog Posts"
     folder: "src/content/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "homepage"
-    label: "Homepage Content"
-    files:
-      - file: "src/content/homepage.json"
-        label: "Homepage"
-        name: "homepage"
-        fields:
-          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-          - { label: "Headline", name: "headline", widget: "string" }
-          - { label: "Subheadline", name: "subheadline", widget: "text" }
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "excerpt", label: "Excerpt", widget: "text", required: false }
+      - { name: "body", label: "Body", widget: "markdown" }

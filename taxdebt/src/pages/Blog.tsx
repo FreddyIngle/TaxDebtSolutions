@@ -3,10 +3,11 @@ import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
 
 // 1) Import all markdown posts from src/content/blog
-const files = import.meta.glob("../content/blog/*.md", {
+const files = import.meta.glob("/src/content/blog/*.md", {
   as: "raw",
   eager: true,
 });
+
 
 // 2) Parse each markdown file using gray-matter
 const posts = Object.entries(files).map(([path, raw]) => {

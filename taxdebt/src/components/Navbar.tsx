@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../logo-small.png";
 
 const navItems = [
-  { label: "Home", href: "#" },
+  { label: "Home", to: "/" },
+  { label: "Blog", to: "/blog" },
   // add more links later if needed
 ];
 
@@ -34,13 +37,13 @@ export function Navbar() {
           {/* Right: desktop nav */}
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.to}
                 className="text-slate-700 hover:text-slate-900"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -88,15 +91,16 @@ export function Navbar() {
         <div className="border-t bg-white md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col space-y-2 px-4 py-3">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium text-slate-700 hover:text-slate-900"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+  <Link
+    key={item.label}
+    to={item.to}
+    className="text-sm font-medium text-slate-700 hover:text-slate-900"
+    onClick={() => setOpen(false)}
+  >
+    {item.label}
+  </Link>
+))}
+
           </div>
         </div>
       )}
